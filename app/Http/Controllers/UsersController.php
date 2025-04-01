@@ -101,5 +101,15 @@ if (!$user) {
         } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
             return response()->json(['error' => 'Failed to log out'], 500);
         }
-    }    
+    }
+    
+    public function index()
+    {
+        try {
+            $users = User::all();
+            return response()->json($users);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
 }

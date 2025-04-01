@@ -9,7 +9,8 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'price', 'duration', 'user_id'];
+    // Use file_paths for storing multiple file paths
+    protected $fillable = ['title', 'description', 'price', 'duration', 'user_id', 'file_paths'];
 
     public function instructor()
     {
@@ -20,4 +21,8 @@ class Course extends Model
     {
         return $this->hasMany(Payment::class);
     }
+    public function enrollments() {
+        return $this->hasMany(Enrollment::class);
+    }
+    
 }
